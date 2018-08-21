@@ -4,7 +4,7 @@
   (= 10 (first rolls)))
 
 (defn skip-frame [rolls]
-  (if (= 10 (first rolls))
+  (if (strike? rolls)
     (drop 1 rolls)
     (drop 2 rolls)))
 
