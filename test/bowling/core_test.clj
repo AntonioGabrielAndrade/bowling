@@ -21,7 +21,10 @@
 
 (deftest take-next-frame-test
   (testing "take next simple frame"
-    (is (= '(1 1) (take-next-frame (repeat 20 1))))))
+    (is (= '(1 1) (take-next-frame (repeat 20 1)))))
+
+  (testing "take next spare frame"
+    (is (= '(5 5 1) (take-next-frame (concat [5 5] (repeat 18 1)))))))
 
 (deftest group-frames-test
   '(testing "group frames for simple game"
