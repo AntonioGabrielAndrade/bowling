@@ -3,13 +3,16 @@
 (defn strike? [rolls]
   (= 10 (first rolls)))
 
+(defn spare? [rolls]
+  (= 10 (reduce + (take 2 rolls))))
+
 (defn skip-frame [rolls]
   (if (strike? rolls)
     (drop 1 rolls)
     (drop 2 rolls)))
 
 (defn take-next-frame [rolls]
-  (if (= 10 (reduce + (take 2 rolls)))
+  (if (spare? rolls)
     (take 3 rolls)
     (take 2 rolls)))
 
