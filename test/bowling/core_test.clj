@@ -2,6 +2,10 @@
   (:require [clojure.test :refer :all]
             [bowling.core :refer :all]))
 
+(deftest strike?-test
+  (testing "check if next frame in rolls is a strike"
+    (is (strike? (concat [10] (repeat 18 1))))))
+
 (deftest skip-frame-test
   (testing "skip simple frame"
     (is (= '(1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0)

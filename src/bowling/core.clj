@@ -1,5 +1,8 @@
 (ns bowling.core)
 
+(defn strike? [rolls]
+  (= 10 (first rolls)))
+
 (defn skip-frame [rolls]
   (if (= 10 (first rolls))
     (drop 1 rolls)
