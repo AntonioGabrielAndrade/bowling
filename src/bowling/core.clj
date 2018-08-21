@@ -1,4 +1,5 @@
 (ns bowling.core)
 
-(defn score [rolls] 0)
+(defn score [rolls]
+  (reduce + rolls))
 
