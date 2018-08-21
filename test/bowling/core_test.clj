@@ -34,13 +34,17 @@
     (is (= '(10 1 1) (take-next-frame (cons 10 (repeat 18 1)))))))
 
 (deftest group-frames-test
-  '(testing "group frames for simple game"
+  (testing "group frames for simple game"
     (is (= '((1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
            (group-frames [1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]))))
 
-  '(testing "group frames for one spare game"
+  (testing "group frames for one spare game"
     (is (= '((5 5 1) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
-           (group-frames [5 5 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0])))))
+           (group-frames [5 5 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]))))
+
+  (testing "group frames for one strike game"
+    (is (= '((10 1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
+           (group-frames [10 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0])))))
 
 (deftest score-test
   (testing "zero score game"
