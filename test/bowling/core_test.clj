@@ -46,6 +46,16 @@
     (is (= '((10 1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
            (group-frames [10 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0])))))
 
+(deftest frame-score-test
+  (testing "calc simple frame score"
+    (is (= 3 (frame-score [1 2]))))
+
+  (testing "calc spare frame score"
+    (is (= 12 (frame-score [5 5 2]))))
+
+  (testing "calc strike frame score"
+    (is (= 12 (frame-score [10 1 1])))))
+
 (deftest score-test
   (testing "zero score game"
     '(is (= 0 (score (repeat 20 0)))))

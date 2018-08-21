@@ -26,7 +26,7 @@
         (conj frames (take-next-frame rem-rolls))))))
 
 (defn frame-score [frame]
-  frame)
+  (reduce + frame))
 
 (defn score [rolls]
   (reduce + (map frame-score (group-frames rolls))))
