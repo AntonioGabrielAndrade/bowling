@@ -19,6 +19,10 @@
     (is (= '(1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0)
            (skip-frame [10 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0])))))
 
+(deftest take-next-frame-test
+  (testing "take next simple frame"
+    (is (= '(1 1) (take-next-frame (repeat 20 1))))))
+
 (deftest group-frames-test
   '(testing "group frames for simple game"
     (is (= '((1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))

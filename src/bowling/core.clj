@@ -9,7 +9,7 @@
     (drop 2 rolls)))
 
 (defn take-next-frame [rolls]
-  )
+  (take 2 rolls))
 
 (defn group-frames [rolls]
   (loop [rem-rolls rolls
