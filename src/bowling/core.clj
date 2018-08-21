@@ -1,7 +1,21 @@
 (ns bowling.core)
 
+(defn skip-frame [rolls]
+  (if (= 10 (first rolls))
+    (drop 1 rolls)
+    (drop 2 rolls)))
+
+(defn take-next-frame [rolls]
+  )
+
 (defn group-frames [rolls]
-  (partition 2 rolls))
+  (loop [rem-rolls rolls
+         frames []]
+    (if (= 10 (count frames))
+      frames
+      (recur
+        (skip-frame rem-rolls)
+        (conj frames (take-next-frame rem-rolls))))))
 
 (defn frame-score [frame]
   frame)

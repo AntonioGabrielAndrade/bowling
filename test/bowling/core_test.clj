@@ -2,10 +2,27 @@
   (:require [clojure.test :refer :all]
             [bowling.core :refer :all]))
 
+(deftest skip-frame-test
+  (testing "skip simple frame"
+    (is (= '(1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0)
+           (skip-frame [2 2 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]))))
+
+  (testing "skip spare frame"
+    (is (= '(1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0)
+           (skip-frame [5 5 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]))))
+
+  (testing "skip strike frame"
+    (is (= '(1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0)
+           (skip-frame [10 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0])))))
+
 (deftest group-frames-test
-  (testing "group frames for simple game"
+  '(testing "group frames for simple game"
     (is (= '((1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
-           (group-frames [1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0])))))
+           (group-frames [1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]))))
+
+  '(testing "group frames for one spare game"
+    (is (= '((5 5 1) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
+           (group-frames [5 5 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0])))))
 
 (deftest score-test
   (testing "zero score game"
