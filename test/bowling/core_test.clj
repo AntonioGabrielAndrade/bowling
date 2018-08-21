@@ -67,4 +67,7 @@
     (is (= 14 (score (concat [5 5 2] (repeat 17 0))))))
 
   (testing "score for one strike game"
-    (is (= 14 (score (concat [10 1 1] (repeat 16 0)))))))
+    (is (= 14 (score (concat [10 1 1] (repeat 16 0))))))
+
+  (testing "Random game"
+    (is (= 145 (score [1 9 2 4 10 10 10 7 1 2 8 7 0 0 0 10 1 9])))))
