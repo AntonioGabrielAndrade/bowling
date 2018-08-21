@@ -64,4 +64,7 @@
     (is (= 20 (score (repeat 20 1)))))
 
   (testing "score for one spare game"
-    (is (= 14 (score (concat [5 5 2] (repeat 17 0)))))))
+    (is (= 14 (score (concat [5 5 2] (repeat 17 0))))))
+
+  (testing "score for one strike game"
+    (is (= 14 (score (concat [10 1 1] (repeat 16 0)))))))
