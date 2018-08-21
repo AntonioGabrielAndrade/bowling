@@ -12,7 +12,7 @@
     (drop 2 rolls)))
 
 (defn take-next-frame [rolls]
-  (if (spare? rolls)
+  (if (or (strike? rolls) (spare? rolls))
     (take 3 rolls)
     (take 2 rolls)))
 

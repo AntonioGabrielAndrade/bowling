@@ -28,7 +28,10 @@
     (is (= '(1 1) (take-next-frame (repeat 20 1)))))
 
   (testing "take next spare frame"
-    (is (= '(5 5 1) (take-next-frame (concat [5 5] (repeat 18 1)))))))
+    (is (= '(5 5 1) (take-next-frame (concat [5 5] (repeat 18 1))))))
+
+  (testing "take next strike frame"
+    (is (= '(10 1 1) (take-next-frame (cons 10 (repeat 18 1)))))))
 
 (deftest group-frames-test
   '(testing "group frames for simple game"
