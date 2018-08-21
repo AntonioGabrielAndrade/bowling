@@ -3,11 +3,11 @@
             [bowling.core :refer :all]))
 
 (deftest strike?-test
-  (testing "check if next frame in rolls is a strike"
+  (testing "check if next frame is a strike"
     (is (strike? (concat [10] (repeat 18 1))))))
 
 (deftest spare?-test
-  (testing "check if next frame in rolls is a spare"
+  (testing "check if next frame is a spare"
     (is (spare? (concat [5 5] (repeat 18 1))))))
 
 (deftest skip-frame-test
@@ -38,11 +38,11 @@
     (is (= '((1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
            (group-frames [1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]))))
 
-  (testing "group frames for one spare game"
+  (testing "group frames for one-spare game"
     (is (= '((5 5 1) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
            (group-frames [5 5 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]))))
 
-  (testing "group frames for one strike game"
+  (testing "group frames for one-strike game"
     (is (= '((10 1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0) (1 0))
            (group-frames [10 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0])))))
 
@@ -57,17 +57,17 @@
     (is (= 12 (frame-score [10 1 1])))))
 
 (deftest score-test
-  (testing "zero score game"
+  (testing "score for zero-game"
     (is (= 0 (score (repeat 20 0)))))
 
   (testing "score for simple game"
     (is (= 20 (score (repeat 20 1)))))
 
-  (testing "score for one spare game"
+  (testing "score for one-spare game"
     (is (= 14 (score (concat [5 5 2] (repeat 17 0))))))
 
-  (testing "score for one strike game"
+  (testing "score for one-strike game"
     (is (= 14 (score (concat [10 1 1] (repeat 16 0))))))
 
-  (testing "Random game"
+  (testing "random game score"
     (is (= 145 (score [1 9 2 4 10 10 10 7 1 2 8 7 0 0 0 10 1 9])))))
